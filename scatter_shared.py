@@ -11,8 +11,8 @@ def get_deploy_routines(deploy_dir):
     return {'custom': custom, 'capfile': capfile}
 
 
-def get_deploy_dir():
-    site = get_site_to_deploy()
+def get_deploy_dir(cap=False):
+    site = get_site_to_deploy(cap)
     deploy_root = get_deploy_root()
 
     # Make sure the deploy path exists
@@ -23,9 +23,9 @@ def get_deploy_dir():
     return deploy_dir
 
 
-def get_site_to_deploy():
+def get_site_to_deploy(cap):
     # Optionally pass the site to deploy as an argument
-    if len(sys.argv) > 1 and sys.argv[1]:
+    if len(sys.argv) > 1 and sys.argv[1] and not cap:
         return sys.argv[1]
     else:
         return find_current_git_repo()

@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import scatter_shared
+import os
+import sys
+
+# Do it
+deploy_dir = scatter_shared.get_deploy_dir(True)
+
+# Remove the first item, which is the script name
+del sys.argv[0]
+os.system('cd ' + deploy_dir + ' && cap ' + sys.argv[0])
