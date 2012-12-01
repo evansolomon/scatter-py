@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-import scatter_shared
+import scatter
 import os
 import sys
 
 
 # Do it
-deploy_dir = scatter_shared.get_deploy_dir()
-deploys = scatter_shared.get_deploy_routines(deploy_dir)
+deploy_dir = scatter.get_deploy_dir()
+deploys = scatter.get_deploy_routines(deploy_dir)
 
 # Check for a custom deploy script
 if deploys['custom']:
