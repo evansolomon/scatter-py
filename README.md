@@ -12,8 +12,7 @@ Since scatter is meant to be used on the command line, it requires some command 
 
 To make Scatter useful, you will need access to its command in your `PATH`.  I like to symlink them to a common directory that I use for bin scripts.
 
-`ln -nfs $PWD/scatter/scatter /path/to/bin/scatter`
-`ln -nfs $PWD/scatter/scap /path/to/bin/scap`
+`ln -nfs $PWD/scatter/scatter /path/to/bin/scatter && ln -nfs $PWD/scatter/scap /path/to/bin/scap`
 
 If you want, you can rename the script to whatever you choose like this.
 
