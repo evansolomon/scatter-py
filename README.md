@@ -14,7 +14,7 @@ To make Scatter useful, you will need access to its command in your `PATH`.  I l
 
 `ln -nfs $PWD/scatter/scatter /path/to/bin/scatter && ln -nfs $PWD/scatter/scap /path/to/bin/scap`
 
-If you want, you can rename the script to whatever you choose like this.
+If you want, you can rename the commands to whatever you choose like this.
 
 `ln -nfs $PWD/scatter/scatter /path/to/bin/notscatter`
 
