@@ -7,21 +7,15 @@ import sys
 
 class Scatter_Deploy(scatter.Scatter):
     def get_routines(self, deploy_dir):
-        custom = self.find_custom_deploy(deploy_dir)
-        capfile = self.find_capfile(deploy_dir)
-
-        return {'custom': custom, 'capfile': capfile}
+        return {
+            'custom': self.find_custom_deploy(deploy_dir),
+            'capfile': self.find_capfile(deploy_dir)
+        }
 
     def find_custom_deploy(self, path):
         # Deploy should be executable and named without a file extension
         deploy = path + 'deploy'
-
-        if not os.path.isfile(deploy):
-            return False
-        elif not os.access(deploy, os.X_OK):
-            return False
-        else:
-            return deploy
+        return deploy if os.access(deploy, os.X_OK) else False
 
 
 # Do it
