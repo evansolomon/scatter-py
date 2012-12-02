@@ -6,17 +6,16 @@ import sys
 
 
 class Scatter_Capistrano(scatter.Scatter):
-    def __init__(self):
-        self.command = self.parse_args()
-        super(Scatter_Capistrano, self).__init__()
+    def __init__(self, args):
+        self.command = self.parse_args(args)
+        super(Scatter_Capistrano, self).__init__(args)
 
-    def parse_args(self):
-        del sys.argv[0]
-        return ' '.join(sys.argv)
+    def parse_args(self, args):
+        return ' '.join(args)
 
 
 # Do it
-cap = Scatter_Capistrano()
+cap = Scatter_Capistrano(sys.argv[1:])
 deploy_dir = cap.get_deploy_dir()
 
 # Remove the first item, which is the script name

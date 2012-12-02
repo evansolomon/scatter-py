@@ -19,7 +19,7 @@ class Scatter_Deploy(scatter.Scatter):
 
 
 # Do it
-deploy = Scatter_Deploy()
+deploy = Scatter_Deploy(sys.argv[1:])
 
 deploy_dir = deploy.get_deploy_dir()
 deploys = deploy.get_routines(deploy_dir)

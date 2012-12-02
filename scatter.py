@@ -5,18 +5,13 @@ import sys
 
 
 class Scatter(object):
-    def __init__(self):
-        self.args = self.parse_args()
+    def __init__(self, args):
+        self.args = self.parse_args(args)
         self.site = self.get_site_to_deploy()
         self.deploys = self.get_deploy_root()
 
-    def parse_args(self):
-        num = len(sys.argv)
-
-        if num == 1:
-            return {}
-        else:
-            return {'site': sys.argv[1]}
+    def parse_args(self, args):
+        return {'site': args[0]} if len(args) else {}
 
     def get_deploy_dir(self):
         deploy_dir = self.deploys + self.site + os.sep
