@@ -28,7 +28,7 @@ class Scatter(object):
 
     def get_site_to_deploy(self):
         if 'site' in self.args:
-            return self.args.site
+            return self.args['site']
         else:
             return self.find_current_git_repo()
 
