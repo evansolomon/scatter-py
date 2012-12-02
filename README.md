@@ -31,9 +31,6 @@ Scatter looks for two flavors of deploy routines, either an executable file in t
 ### Separate Projects
 By default, Scatter will use the basename from the root of the git repository its run from.  For example, let's say you have a git repository in `/Users/evan/code/some-project` and you are currently in a directory like `/Users/evan/code/some-project/sub/directory`.  Running `scatter` here would assume you had a deploy routine in `/path/to/scatter/deploys/some-project`.  If you don't want that, or if you're not using a git repository, or if you just want to run the command from outside your repository, you can pass the deploy directory name as a command line argument.  In this case, let's say your deploy script is in `/path/to/scatter/deploys/other-name`; you would run `scatter other-name`.
 
-### Deploy Routine Locations
-If you prefer to manage your deploy scripts outside the `/path/to/scatter/deploys` directory, you can pass a custom deploys directory as a second command line argument.  For example, `scatter other-name /path/to/my/deploys`.  Scatter will still assume your deploy script (the same ones described in "Deploy Routines") is in a subdirectory that matches the project slug, in this case `/path/to/my/deploys/other-name`.
-
 
 ## Requirements
 Scatter is written in Python, so you'll need it installed.  I think that's about it.  I wrote it to use on OSX, but I suppose there's a chance it works in other environments with Python installed, too.
