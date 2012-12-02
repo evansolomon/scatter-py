@@ -10,10 +10,6 @@ Since scatter is meant to be used on the command line, it requires some command 
 
 `git clone https://github.com/evansolomon/scatter.git`
 
-Scatter comes with only one useful file, appropriately named `scatter`.  First, make sure that file is executable.
-
-`chmod +x scatter/scatter`
-
 To make Scatter useful, you will need access to the scatter command in your `PATH`.  I like to symlink it to a common directory that I use for bin scripts.
 
 `ln -nfs $PWD/scatter/scatter /path/to/bin/scatter`
