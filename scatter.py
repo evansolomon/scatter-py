@@ -46,8 +46,4 @@ class Scatter(object):
     def find_capfile(self, path):
         # Assumes finding a Capfile means this is a Capistrano site
         capfile = path + 'Capfile'
-
-        if not os.path.isfile(capfile):
-            return False
-        else:
-            return capfile
+        return capfile if os.path.isfile(capfile) else False
