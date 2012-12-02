@@ -22,7 +22,7 @@ class Scatter(object):
         deploy_dir = self.deploys + self.site + os.sep
 
         if not os.path.isdir(deploy_dir):
-            sys.exit("Deploy path doesn't exist: " + deploy_dir)
+            sys.exit("Deploy path doesn't exist: %s" % deploy_dir)
 
         return deploy_dir
 

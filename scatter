@@ -38,7 +38,7 @@ if deploys['custom']:
 # Check for a Capfile
 elif deploys['capfile']:
     print 'Found Capfile:', deploys['capfile']
-    os.system('cd ' + deploy_dir + ' && cap deploy && cd -')
+    os.system("cd %s && cap deploy" % deploy_dir)
 
 # Couldn't figure out what/how to deploy
 else:

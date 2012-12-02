@@ -20,4 +20,4 @@ cap = Scatter_Capistrano()
 deploy_dir = cap.get_deploy_dir()
 
 # Remove the first item, which is the script name
-os.system('cd ' + deploy_dir + ' && cap ' + cap.command)
+os.system("cd %s && cap %s" % (deploy_dir, cap.command))
