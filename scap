@@ -4,9 +4,20 @@ import scatter
 import os
 import sys
 
+
+class Scatter_Capistrano(scatter.Scatter):
+    def __init__(self):
+        self.command = self.parse_args()
+        super(Scatter_Capistrano, self).__init__()
+
+    def parse_args(self):
+        del sys.argv[0]
+        return ' '.join(sys.argv)
+
+
 # Do it
-deploy_dir = scatter.get_deploy_dir(True)
+cap = Scatter_Capistrano()
+deploy_dir = cap.get_deploy_dir()
 
 # Remove the first item, which is the script name
-del sys.argv[0]
-os.system('cd ' + deploy_dir + ' && cap ' + sys.argv[0])
+os.system('cd ' + deploy_dir + ' && cap ' + cap.command)
