@@ -56,36 +56,3 @@ class Scatter(object):
             return False
         else:
             return capfile
-
-
-
-
-
-def get_deploy_routines(deploy_dir):
-    custom = find_custom_deploy(deploy_dir)
-    capfile = find_capfile(deploy_dir)
-
-    return {'custom': custom, 'capfile': capfile}
-
-
-
-def find_capfile(path):
-    # Assumes finding a Capfile means this is a Capistrano site
-    capfile = path + 'Capfile'
-
-    if not os.path.isfile(capfile):
-        return False
-    else:
-        return capfile
-
-
-def find_custom_deploy(path):
-    # Deploy should be executable and named without a file extension
-    deploy = path + 'deploy'
-
-    if not os.path.isfile(deploy):
-        return False
-    elif not os.access(deploy, os.X_OK):
-        return False
-    else:
-        return deploy
