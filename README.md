@@ -27,6 +27,10 @@ Now that you have Scatter installed, you'll need to setup some deploy scripts fo
 ### Deploy Routines
 Scatter looks for two flavors of deploy routines, either an executable file in the appropriate directory (explained below) named `deploy` (no file extension) or a `Capfile`, which it assumes is from Capistrano.  A custom deploy script will be used whenever its found, and it will fall back to a basic `cap deploy` if a Capfile is found.  If you're using Capistrano but want something more complex than `cap deploy`, write it into a `deploy` script and make sure the file is executable.
 
+### Capistrano
+
+The `scap` command can be used to proxy arbitrary Capistrano commands to your deploy directory.  While `scatter` can run a basic `cap deploy`, `scap` can do whatever you like.  So you could run something like `scap nginx:restart` (assuming you have a task called `restart` in the `nginx` namespace).  `scap` should work exactly like Capistrano's native `cap` command, as all it does is proxy its arguments to the correct directory.
+
 ### Separate Projects
 By default, Scatter will use the basename from the root of the git repository its run from.  For example, let's say you have a git repository in `/Users/evan/code/some-project` and you are currently in a directory like `/Users/evan/code/some-project/sub/directory`.  Running `scatter` here would assume you had a deploy routine in `/path/to/scatter/deploys/some-project`.  If you don't want that, or if you're not using a git repository, or if you just want to run the command from outside your repository, you can pass the deploy directory name as a command line argument.  In this case, let's say your deploy script is in `/path/to/scatter/deploys/other-name`; you would run `scatter other-name`.
 
