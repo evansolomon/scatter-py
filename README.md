@@ -1,6 +1,8 @@
 # Scatter
 
-This is a command line tool I wrote to help manage deploying different projects.  It is strongly influenced by our deploy script on WordPress.com, which I like quite a bit.  It was written entirely for my own use, but I figured someone else might find it valuable.
+This is a command line tool I wrote to help manage deploying different projects.  It comes with two commands, `scatter` (used for deploys) and `scap` (used for proxying capistrano commands to deploy directories).
+
+It is strongly influenced by our deploy script on WordPress.com, which I like quite a bit.  It was written entirely for my own use, but I figured someone else might find it valuable.
 
 ## Installation
 
