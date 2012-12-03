@@ -15,11 +15,7 @@ class Scatter(object):
 
     def get_deploy_dir(self):
         deploy_dir = self.trailing_slash(self.deploys + self.site)
-
-        if not os.path.isdir(deploy_dir):
-            sys.exit("Deploy path doesn't exist: %s" % deploy_dir)
-
-        return deploy_dir
+        return deploy_dir if os.path.isdir(deploy_dir) else False
 
     def get_site_to_deploy(self):
         if 'site' in self.args:
