@@ -13,6 +13,9 @@ class Scatter(object):
         return {'site': args[0]} if len(args) else {}
 
     def get_deploy_dir(self):
+        if not self.deploys or not self.site:
+            return False
+
         deploy_dir = self.trailing_slash(self.deploys + self.site)
         return deploy_dir if os.path.isdir(deploy_dir) else False
 
