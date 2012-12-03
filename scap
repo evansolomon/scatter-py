@@ -14,10 +14,13 @@ class Scatter_Capistrano(scatter.Scatter):
         return ' '.join(args)
 
 
-# Do it
-cap = Scatter_Capistrano(sys.argv[1:])
-deploy_dir = cap.get_deploy_dir()
+def scap():
+    cap = Scatter_Capistrano(sys.argv[1:])
+    deploy_dir = cap.get_deploy_dir()
 
-# Remove the first item, which is the script name
-if deploy_dir and cap.command:
-    os.system("cd %s && cap %s" % (deploy_dir, cap.command))
+    # Remove the first item, which is the script name
+    if deploy_dir and cap.command:
+        os.system("cd %s && cap %s" % (deploy_dir, cap.command))
+
+if __name__ == '__main__':
+    scap()

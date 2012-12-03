@@ -18,22 +18,25 @@ class Scatter_Deploy(scatter.Scatter):
         return deploy if os.access(deploy, os.X_OK) else False
 
 
-# Do it
-deploy = Scatter_Deploy(sys.argv[1:])
+def deploy():
+    deploy = Scatter_Deploy(sys.argv[1:])
 
-deploy_dir = deploy.get_deploy_dir()
-deploys = deploy.get_routines(deploy_dir)
+    deploy_dir = deploy.get_deploy_dir()
+    deploys = deploy.get_routines(deploy_dir)
 
-# Check for a custom deploy script
-if deploys['custom']:
-    print 'Found deploy executable:', deploys['custom']
-    os.system(deploys['custom'])
+    # Check for a custom deploy script
+    if deploys['custom']:
+        print 'Found deploy executable:', deploys['custom']
+        os.system(deploys['custom'])
 
-# Check for a Capfile
-elif deploys['capfile']:
-    print 'Found Capfile:', deploys['capfile']
-    os.system("cd %s && cap deploy" % deploy_dir)
+    # Check for a Capfile
+    elif deploys['capfile']:
+        print 'Found Capfile:', deploys['capfile']
+        os.system("cd %s && cap deploy" % deploy_dir)
 
-# Couldn't figure out what/how to deploy
-else:
-    sys.exit("Deploy fail :/")
+    # Couldn't figure out what/how to deploy
+    else:
+        sys.exit("Deploy fail :/")
+
+if __name__ == '__main__':
+    deploy()
