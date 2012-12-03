@@ -14,7 +14,7 @@ class Scatter(object):
         return {'site': args[0]} if len(args) else {}
 
     def get_deploy_dir(self):
-        deploy_dir = self.deploys + self.site + os.sep
+        deploy_dir = self.trailing_slash(self.deploys + self.site)
 
         if not os.path.isdir(deploy_dir):
             sys.exit("Deploy path doesn't exist: %s" % deploy_dir)
@@ -38,12 +38,19 @@ class Scatter(object):
 
     def get_deploy_root(self):
         # Path to the root of the deploy scripts directory
-        path = os.path.dirname(os.path.realpath(__file__)) + os.sep + 'deploys'
+        scatter = os.path.dirname(os.path.realpath(__file__))
+        deploys = self.trailing_slash(scatter) + 'deploys'
 
         # Trailing slash
-        return os.path.normpath(path) + os.sep
+        return self.trailing_slash(os.path.normpath(deploys))
 
     def find_capfile(self, path):
         # Assumes finding a Capfile means this is a Capistrano site
         capfile = path + 'Capfile'
         return capfile if os.path.isfile(capfile) else False
+
+    def trailing_slash(self, string):
+        if os.sep == string[-1]:
+            return string
+
+        return string + os.sep
