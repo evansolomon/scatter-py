@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 
 
 class Scatter(object):
@@ -26,7 +25,7 @@ class Scatter(object):
     def find_current_git_repo(self):
         # Bail if we are not in a git repo
         if not os.system('git rev-parse 2> /dev/null > /dev/null') == 0:
-            sys.exit("We're not in a git repo")
+            return False
 
         # Returns the path to the root of the current git repo
         current_git_root = os.popen('git rev-parse --show-toplevel').read().rstrip()
