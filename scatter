@@ -7,18 +7,21 @@ import sys
 
 class Scatter_Deploy(scatter.Scatter):
     def get_routines(self, deploy_dir):
+        """Find the current site's deploy routines"""
         return {
             'custom': self.find_custom_deploy(deploy_dir),
             'capfile': self.find_capfile(deploy_dir)
         }
 
     def find_custom_deploy(self, path):
+        """Look for a custom deploy executable for the current site"""
         # Deploy should be executable and named without a file extension
         deploy = path + 'deploy'
         return deploy if os.access(deploy, os.X_OK) else False
 
 
 def deploy():
+    """Run the deploy"""
     deploy = Scatter_Deploy(sys.argv[1:])
 
     deploy_dir = deploy.get_deploy_dir()

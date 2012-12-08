@@ -7,14 +7,17 @@ import sys
 
 class Scatter_Capistrano(scatter.Scatter):
     def __init__(self, args):
+        """Parse the Capistrano command to run"""
         self.command = self.parse_args(args)
         super(Scatter_Capistrano, self).__init__(args)
 
     def parse_args(self, args):
+        """Re-combine command line args"""
         return ' '.join(args)
 
 
 def scap():
+    """Run the Capistrano command on the target directory"""
     cap = Scatter_Capistrano(sys.argv[1:])
     deploy_dir = cap.get_deploy_dir()
 
