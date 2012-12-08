@@ -14,8 +14,10 @@ class Scatter_Deploy(scatter.Scatter):
         }
 
     def find_custom_deploy(self, path):
-        """Look for a custom deploy executable for the current site"""
-        # Deploy should be executable and named without a file extension
+        """
+        Look for a custom deploy executable for the current site
+        Deploy should be executable and named without a file extension
+        """
         deploy = path + 'deploy'
         return deploy if os.access(deploy, os.X_OK) else False
 
