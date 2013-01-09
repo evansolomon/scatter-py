@@ -22,7 +22,7 @@ class Scatter_Deploy(scatter.Scatter):
         return deploy if os.access(deploy, os.X_OK) else False
 
 
-def deploy():
+def main():
     """Run the deploy"""
     deploy = Scatter_Deploy(sys.argv[1:])
 
@@ -44,4 +44,4 @@ def deploy():
         sys.exit("Deploy fail :/")
 
 if __name__ == '__main__':
-    deploy()
+    main()

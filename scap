@@ -16,7 +16,7 @@ class Scatter_Capistrano(scatter.Scatter):
         return ' '.join(args)
 
 
-def scap():
+def main():
     """Run the Capistrano command on the target directory"""
     cap = Scatter_Capistrano(sys.argv[1:])
     deploy_dir = cap.get_deploy_dir()
@@ -25,4 +25,4 @@ def scap():
         os.system("cd %s && cap %s" % (deploy_dir, cap.command))
 
 if __name__ == '__main__':
-    scap()
+    main()
