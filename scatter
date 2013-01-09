@@ -8,7 +8,7 @@ import sys
 class Scatter_Deploy(scatter.Scatter):
     def get_routines(self, deploy_dir):
         """Find the current site's deploy routines"""
-        return {
+        return {} if not deploy_dir else {
             'custom': self.find_custom_deploy(deploy_dir),
             'capfile': self.find_capfile(deploy_dir)
         }
@@ -30,12 +30,12 @@ def deploy():
     deploys = deploy.get_routines(deploy_dir)
 
     # Check for a custom deploy script
-    if deploys['custom']:
+    if deploys.get('custom'):
         print 'Found deploy executable:', deploys['custom']
         os.system(deploys['custom'])
 
     # Check for a Capfile
-    elif deploys['capfile']:
+    elif deploys.get('capfile'):
         print 'Found Capfile:', deploys['capfile']
         os.system("cd %s && cap deploy" % deploy_dir)
 
