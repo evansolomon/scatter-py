@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This is an old version of Scatter, which has a new home as a Ruby gem [over here](https://github.com/evansolomon/scatter).  It's here only for posterity, you probably shouldn't use it.
+
 # Scatter
 
 This is a command line tool I wrote to help manage deploying different projects.  It comes with two commands, `scatter` (used for deploys) and `scap` (used for proxying capistrano commands to deploy directories).
